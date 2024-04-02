@@ -165,7 +165,7 @@ public:
 
             //if (this->velocity[0] < 0.05f && this->velocity[1] < 0.05f) {
 
-                _Audio.Write_Sound_Thread(std::abs(this->yCoord * this->xCoord * 34863.0f), 0.05);
+                _Audio.Write_Sound_Thread(std::abs(this->yCoord * this->xCoord * 10000.0), 0.025);
 
            // }
             

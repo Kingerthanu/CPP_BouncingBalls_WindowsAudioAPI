@@ -9,7 +9,7 @@
 
 static const unsigned int WIDTH = 1200;
 
-static const unsigned int BALL_AMOUNT = 5;
+static const unsigned int BALL_AMOUNT = 2;
 
 
 int main()

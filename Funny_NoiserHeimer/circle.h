@@ -135,7 +135,7 @@ public:
 
             glUnmapBuffer(GL_ARRAY_BUFFER);
 
-            this->velocity[1] -= 0.002f;
+            this->velocity[1] -= 0.004f;
             this->xCoord = newOriginX;
             this->yCoord = newOriginY;
             this->update();
@@ -165,7 +165,7 @@ public:
 
             //if (this->velocity[0] < 0.05f && this->velocity[1] < 0.05f) {
 
-                _Audio.Write_Sound_Thread(1100.0, 0.00125);
+                _Audio.Write_Sound_Thread(std::abs(this->yCoord * this->xCoord * 34863.0f), 0.05);
 
            // }
             

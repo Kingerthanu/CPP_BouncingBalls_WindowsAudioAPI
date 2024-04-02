@@ -39,15 +39,19 @@ public:
         const int numSamples = static_cast<int>(format.nSamplesPerSec * duration);
         std::vector<short> samples(numSamples);
 
-        const double amplitude = 83300.0;
-        const double decayFactor = 0.98; // Decay factor to simulate the "bing" sound fading out
+        const double amplitude = 10000.0;
+        const double decayFactor = 0.98; // Decay factor to simulate the sound fading out
 
         for (int i = 0; i < numSamples; ++i)
         {
             double t = static_cast<double>(i) / format.nSamplesPerSec;
 
-            // Generate a sine wave with the specified frequency and amplitude
-            double waveValue = amplitude * std::sin(3.1415926 * frequency * t);
+            // Generate a mixture of harmonics using sine waves
+            double waveValue = amplitude * (
+                std::sin(2 * 3.1415926 * frequency * t) +
+                0.5 * std::sin(2 * 3.1415926 * 2 * frequency * t) +
+                0.25 * std::sin(2 * 3.1415926 * 3 * frequency * t)
+                );
 
             // Apply exponential decay to simulate fading out
             waveValue *= std::pow(decayFactor, i);
@@ -55,7 +59,7 @@ public:
             samples[i] = static_cast<short>(waveValue);
         }
 
-        // Prepare audio header
+        // Prepare audio header and write sound
         ZeroMemory(&header, sizeof(header));
         header.lpData = reinterpret_cast<LPSTR>(&samples[0]);
         header.dwBufferLength = sizeof(samples[0]) * samples.size();
@@ -63,14 +67,11 @@ public:
         MMRESULT result = waveOutPrepareHeader(hWaveOut, &header, sizeof(header));
         result = waveOutWrite(hWaveOut, &header, sizeof(header));
 
-
         while (waveOutWrite(hWaveOut, &header, sizeof(header)) == WAVERR_STILLPLAYING) {
-            Sleep(5);
+            // Waiting for playback to finish
         }
 
-        //
         waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
-
     }
 
 

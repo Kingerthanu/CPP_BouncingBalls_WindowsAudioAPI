@@ -68,7 +68,7 @@ public:
             Sleep(5);
         }
 
-
+        //
         waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
 
     }

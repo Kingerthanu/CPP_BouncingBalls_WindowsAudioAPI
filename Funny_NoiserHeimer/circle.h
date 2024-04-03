@@ -18,7 +18,7 @@ private:
     float xCoord, yCoord;
     const float radius = 0.05f;
     float velocity[2];
-    glm::vec3 color = { 0.8f, 0.2f, 0.5f };
+    const glm::vec3 color;
 
 public:
 
@@ -33,7 +33,7 @@ public:
     }
 
     Circle(const float& xNormalized, const float& yNormalized, const float& xVelocity,
-           const float& yVelocity, const float& newRadius = 0.05f, const unsigned int& segAmnt = 15) : radius(newRadius), segments(segAmnt)
+           const float& yVelocity, const float& newRadius = 0.05f, const unsigned int& segAmnt = 15, const glm::vec3& newColor = { 0.8f, 0.2f, 0.5f }) : radius(newRadius), segments(segAmnt), color(newColor)
     {
 
         this->velocity[0] = xVelocity;
@@ -148,7 +148,7 @@ public:
 
             glUnmapBuffer(GL_ARRAY_BUFFER);
 
-            this->velocity[1] -= 0.0004f;
+            this->velocity[1] -= 0.0008f;
             this->velocity[0] *= 1.001f;
             this->xCoord = newOriginX;
             this->yCoord = newOriginY;
@@ -176,7 +176,7 @@ public:
 
             // std::cout << "Out of Bounds\n";
             this->velocity[0] *= -0.95f;
-            this->velocity[1] *= -0.95f;
+            this->velocity[1] *= -0.975f;
 
             //this->update();
 

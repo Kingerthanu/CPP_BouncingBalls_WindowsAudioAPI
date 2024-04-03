@@ -49,8 +49,8 @@ public:
         //std::cout << "Sounding...\n";
 
         // Define frequency and duration for the ding sound
-        const double dingFrequency =  321.0 + (velocityX * 100000.0) + (velocityY * 100000.0); // High-pitch frequency
-        const double dingDuration = 0.025; // Duration of the ding sound in seconds
+        const double dingFrequency =  335.134 + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
+        const double dingDuration = 0.01; // Duration of the ding sound in seconds
 
         // Calculate the number of samples for the ding sound
         const int dingNumSamples = static_cast<int>(format.nSamplesPerSec * dingDuration);

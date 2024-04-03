@@ -9,7 +9,7 @@
 
 static const unsigned int WIDTH = 1200;
 
-static const unsigned int BALL_AMOUNT = 10;
+static const unsigned int BALL_AMOUNT = 15;
 
 
 int main()
@@ -64,7 +64,7 @@ int main()
 	
 	shaderProg.Activate();
 
-	Circle boundaryCircle = Circle(0.0f, 0.0f, 0.0f, 0.0f, 1.f, 60, glm::vec3(0.1f, 0.53f, 0.32f));
+	Circle boundaryCircle = Circle(0.0f, 0.0f, 0.0f, 0.0f, 0.8f, 60, glm::vec3(0.1f, 0.73f, 0.32f));
 
 	std::chrono::duration<double> frameDuration(1.0 / 120);
 

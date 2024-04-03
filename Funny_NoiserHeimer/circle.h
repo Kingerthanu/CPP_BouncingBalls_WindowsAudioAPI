@@ -16,13 +16,24 @@ private:
     const unsigned int segments = 15;
     //EBO elementBuffer;
     float xCoord, yCoord;
-    float radius = 0.05f;
+    const float radius = 0.05f;
     float velocity[2];
     glm::vec3 color = { 0.8f, 0.2f, 0.5f };
 
 public:
 
-    Circle(const float& xNormalized, const float& yNormalized, const float& xVelocity, const float& yVelocity)
+    bool isOverlap(const float& xCoord, const float& yCoord, const float& radius) const
+    {
+        // Calculate distance between centers of the circles
+        float dx = this->xCoord - xCoord;
+        float dy = this->yCoord - yCoord;
+        float distance = std::sqrt(dx * dx + dy * dy);
+
+        return distance < (this->radius + radius);
+    }
+
+    Circle(const float& xNormalized, const float& yNormalized, const float& xVelocity,
+           const float& yVelocity, const float& newRadius = 0.05f, const unsigned int& segAmnt = 15) : radius(newRadius), segments(segAmnt)
     {
 
         this->velocity[0] = xVelocity;
@@ -81,7 +92,7 @@ public:
 
             glUnmapBuffer(GL_ARRAY_BUFFER);
 
-            this->velocity[1] -= 0.002f;
+            this->velocity[1] -= 0.004f;
             this->xCoord = newOriginX;
             this->yCoord = newOriginY;
             this->update();
@@ -90,6 +101,7 @@ public:
         }
         else {
 
+            this->vertexBuffer.Bind();
 
             Vertex* bufferData = static_cast<Vertex*>(glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE));
 
@@ -113,12 +125,13 @@ public:
 
     }
 
-    void tick(Audio_Driver& _Audio)
+    void tick(Audio_Driver& _Audio, Circle& boundingCircle)
     {
 
         float newOriginX = this->xCoord + this->velocity[0], newOriginY = this->yCoord + this->velocity[1];
 
-        if ((-1.0f <= newOriginX && newOriginX <= 1.0f) && (-1.0f <= newOriginY && newOriginY <= 1.0f)) {
+        //if ((-1.0f <= newOriginX && newOriginX <= 1.0f) && (-1.0f <= newOriginY && newOriginY <= 1.0f)) {
+        if (boundingCircle.isOverlap(newOriginX, newOriginY, this->radius)) {
             //  std::cout << "In Bounds\n";
 
             this->vertexBuffer.Bind();
@@ -129,13 +142,13 @@ public:
 
                 bufferData[i].position[0] += velocity[0];
                 bufferData[i].position[1] += velocity[1];
-                bufferData[i].color *= 1.01f;
+                // bufferData[i].color *= 1.01f;
 
             }
 
             glUnmapBuffer(GL_ARRAY_BUFFER);
 
-            this->velocity[1] -= 0.004f;
+            this->velocity[1] -= 0.0002f;
             this->xCoord = newOriginX;
             this->yCoord = newOriginY;
             this->update();
@@ -144,6 +157,8 @@ public:
         }
         else {
 
+
+            this->vertexBuffer.Bind();
 
             Vertex* bufferData = static_cast<Vertex*>(glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE));
 
@@ -159,9 +174,10 @@ public:
 
 
             // std::cout << "Out of Bounds\n";
-            this->velocity[0] *= -0.98f;
-            this->velocity[1] *= -0.98f;
+            this->velocity[0] *= -0.95f;
+            this->velocity[1] *= -0.95f;
 
+            //this->update();
 
             //if (this->velocity[0] < 0.05f && this->velocity[1] < 0.05f) {
 

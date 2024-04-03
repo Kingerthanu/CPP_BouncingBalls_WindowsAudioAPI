@@ -9,7 +9,7 @@
 
 static const unsigned int WIDTH = 1200;
 
-static const unsigned int BALL_AMOUNT = 2;
+static const unsigned int BALL_AMOUNT = 35;
 
 
 int main()
@@ -53,16 +53,18 @@ int main()
 		std::mt19937 gen(rd());
 
 		// Define a distribution (e.g., uniform distribution between 1 and 100)
-		std::uniform_real_distribution<float> randomCoord(-0.85f, 0.85f);
+		std::uniform_real_distribution<float> randomCoord(-0.25f, 0.25f);
 
 		for (unsigned int i = 0; i < BALL_AMOUNT; i++) {
 
-			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  -0.001 * (std::rand() % 10), -0.002f * (std::rand() % 10));
+			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  -0.003 * (std::rand() % 10), -0.002f * (std::rand() % 10), 0.015f);
 
 		}
 	}
 	
 	shaderProg.Activate();
+
+	Circle boundaryCircle = Circle(0.0f, 0.0f, 0.0f, 0.0f, 0.65f, 60);
 
 	std::chrono::duration<double> frameDuration(1.0 / 120);
 
@@ -74,11 +76,14 @@ int main()
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		
+		boundaryCircle.update();
 	
 		for (unsigned int i = 0; i < BALL_AMOUNT; i++) {
 
-			circleBuffer[i]->tick(_AUDIO);
+
+			circleBuffer[i]->tick(_AUDIO, boundaryCircle);
+			
+			
 
 		}
 

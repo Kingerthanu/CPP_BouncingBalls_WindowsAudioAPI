@@ -9,7 +9,7 @@
 
 static const unsigned int WIDTH = 1200;
 
-static const unsigned int BALL_AMOUNT = 3;
+static const unsigned int BALL_AMOUNT = 5;
 
 
 int main()
@@ -57,14 +57,14 @@ int main()
 
 		for (unsigned int i = 0; i < BALL_AMOUNT; i++) {
 
-			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  -0.003 * (std::rand() % 10), -0.004f * (std::rand() % 10), 0.015f);
+			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  (- 0.003 * (std::rand() % 10)) / BALL_AMOUNT, (- 0.004f * (std::rand() % 10)) / BALL_AMOUNT, 0.015f);
 
 		}
 	}
 	
 	shaderProg.Activate();
 
-	Circle boundaryCircle = Circle(0.0f, 0.0f, 0.0f, 0.0f, 0.4f, 60, glm::vec3(0.1f, 0.73f, 0.32f));
+	Circle boundaryCircle = Circle(0.0f, 0.0f, 0.0f, 0.0f, 0.8f, 60, glm::vec3(0.1f, 0.73f, 0.32f));
 
 	std::chrono::duration<double> frameDuration(1.0 / 120);
 

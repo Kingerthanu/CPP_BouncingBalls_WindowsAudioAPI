@@ -15,6 +15,19 @@ private:
     HWAVEOUT hWaveOut;
     WAVEHDR header;
 
+    // ~~~~~~~~Constants of Feedback~~~~~~~~~~~~
+
+        const double dingDuration = 0.01; // Duration of the ding sound in seconds
+
+        // Calculate the number of samples for the ding sound     (44100 is hard-baked as we predeterminately know our nSamplesPerSec).
+        const int dingNumSamples = (int)(44100 * dingDuration);
+
+        // Amplitude and decay factor for the ding sound
+        const double dingAmplitude = 0.5 * 32767.0; // Half of the maximum amplitude to prevent clipping
+        const double dingDecayFactor = 0.995; // Adjusted for a smoother decay
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 public:
     Audio_Driver()
     {
@@ -49,15 +62,7 @@ public:
         //std::cout << "Sounding...\n";
 
         // Define frequency and duration for the ding sound
-        const double dingFrequency =  335.134 + (velocityX * 5000.0) + (velocityY * 5000.0); // High-pitch frequency
-        const double dingDuration = 0.01; // Duration of the ding sound in seconds
-
-        // Calculate the number of samples for the ding sound
-        const int dingNumSamples = static_cast<int>(format.nSamplesPerSec * dingDuration);
-
-        // Amplitude and decay factor for the ding sound
-        const double dingAmplitude = 0.5 * 32767.0; // Half of the maximum amplitude to prevent clipping
-        const double dingDecayFactor = 0.995; // Adjusted for a smoother decay
+        const double dingFrequency =  135.134 + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
 
         // Vector to hold the ding sound wave samples
         std::vector<short> dingSamples(dingNumSamples);
@@ -84,6 +89,8 @@ public:
 
         // Wait for ding sound playback to finish
         waveOutWrite(hWaveOut, &header, sizeof(header));
+
+        // Wait half a second for sound
         Sleep(500);
 
         // Unprepare the ding sound buffer

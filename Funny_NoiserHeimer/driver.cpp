@@ -9,7 +9,7 @@
 
 static const unsigned int WIDTH = 1200;
 
-static const unsigned int BALL_AMOUNT = 5;
+static const unsigned int BALL_AMOUNT = 3;
 
 
 int main()
@@ -57,7 +57,7 @@ int main()
 
 		for (unsigned int i = 0; i < BALL_AMOUNT; i++) {
 
-			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  (- 0.003 * (std::rand() % 10)) / BALL_AMOUNT, (- 0.004f * (std::rand() % 10)) / BALL_AMOUNT, 0.015f);
+			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  (- 0.003 * (std::rand() % 20)) / BALL_AMOUNT, (- 0.004f * (std::rand() % 20)) / BALL_AMOUNT, 0.015f);
 
 		}
 	}

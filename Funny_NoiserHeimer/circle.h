@@ -174,9 +174,18 @@ public:
             glUnmapBuffer(GL_ARRAY_BUFFER);
 
 
-            // std::cout << "Out of Bounds\n";
-            this->velocity[0] *= -0.95f;
-            this->velocity[1] *= -0.975f;
+
+            // Check if velocity is below the threshold for terminal velocity
+            if (( std::sqrt(this->velocity[0] * this->velocity[0] + this->velocity[1] * this->velocity[1]) ) < 0.1f) {
+                // If velocity is below threshold, multiply by a factor slightly greater than -1.0f
+                this->velocity[0] *= -1.01f;
+                this->velocity[1] *= -1.01f;
+            }
+            else {
+                // If velocity is not below threshold, multiply by -1.0f
+                this->velocity[0] = -this->velocity[0];
+                this->velocity[1] = -this->velocity[1];
+            }
 
             //this->update();
 

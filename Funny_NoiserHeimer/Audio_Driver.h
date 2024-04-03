@@ -49,7 +49,7 @@ public:
         //std::cout << "Sounding...\n";
 
         // Define frequency and duration for the ding sound
-        const double dingFrequency = 400.0 + (velocityX * 100000.0) + (velocityY * 100000.0); // High-pitch frequency
+        const double dingFrequency =  321.0 + (velocityX * 100000.0) + (velocityY * 100000.0); // High-pitch frequency
         const double dingDuration = 0.025; // Duration of the ding sound in seconds
 
         // Calculate the number of samples for the ding sound
@@ -83,9 +83,8 @@ public:
         
 
         // Wait for ding sound playback to finish
-        while (waveOutWrite(hWaveOut, &header, sizeof(header)) == WAVERR_STILLPLAYING) {
-
-        }
+        waveOutWrite(hWaveOut, &header, sizeof(header));
+        Sleep(500);
 
         // Unprepare the ding sound buffer
         waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));

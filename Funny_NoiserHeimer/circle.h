@@ -148,7 +148,8 @@ public:
 
             glUnmapBuffer(GL_ARRAY_BUFFER);
 
-            this->velocity[1] -= 0.0002f;
+            this->velocity[1] -= 0.0004f;
+            this->velocity[0] *= 1.001f;
             this->xCoord = newOriginX;
             this->yCoord = newOriginY;
             this->update();
@@ -174,8 +175,8 @@ public:
 
 
             // std::cout << "Out of Bounds\n";
-            this->velocity[0] *= -1.01f;
-            this->velocity[1] *= -1.01f;
+            this->velocity[0] *= -0.95f;
+            this->velocity[1] *= -0.95f;
 
             //this->update();
 

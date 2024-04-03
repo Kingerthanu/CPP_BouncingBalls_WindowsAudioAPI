@@ -115,8 +115,8 @@ public:
 
             
            //  std::cout << "Out of Bounds\n";
-            this->velocity[0] *= -0.95f;
-            this->velocity[1] *= -0.95f;
+            this->velocity[0] *= -10.95f;
+            this->velocity[1] *= -10.95f;
 
         }
 
@@ -174,15 +174,15 @@ public:
 
 
             // std::cout << "Out of Bounds\n";
-            this->velocity[0] *= -0.95f;
-            this->velocity[1] *= -0.95f;
+            this->velocity[0] *= -1.01f;
+            this->velocity[1] *= -1.01f;
 
             //this->update();
 
             //if (this->velocity[0] < 0.05f && this->velocity[1] < 0.05f) {
 
-                _Audio.Write_Sound_Thread(std::abs((this->velocity[0] * 10000.0f) + (this->velocity[0] * 10000.0f)) * 37532.145614, 0.0025);
-
+                //_Audio.Write_Sound_Thread(std::abs((this->velocity[0] * 10000.0f) + (this->velocity[0] * 10000.0f)) * 37532.145614, 0.0025);
+                _Audio.Write_Sound_Thread(std::abs(this->velocity[0]), std::abs(this->velocity[1]));
            // }
             
             

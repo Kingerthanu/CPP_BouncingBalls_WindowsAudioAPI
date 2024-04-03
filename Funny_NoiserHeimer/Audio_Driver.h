@@ -5,6 +5,8 @@
 #include <vector>
 #include <random>
 #include <thread>
+#include <algorithm>
+#include <iostream>
 
 class Audio_Driver
 {
@@ -18,63 +20,77 @@ public:
     {
         format.wFormatTag = WAVE_FORMAT_PCM;
         format.nChannels = 1;
-        format.nSamplesPerSec = 1000; // Adjust if necessary
-        format.wBitsPerSample = 8;
-        format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8); // Quadruple the buffer size
+        format.nSamplesPerSec = 44100; // Adjusted to standard audio sample rate
+        format.wBitsPerSample = 16; // Increased for better audio quality
+        format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8);
         format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;
         format.cbSize = 0;
 
-        
         ZeroMemory(&header, sizeof(header));
         MMRESULT result = waveOutOpen(&hWaveOut, WAVE_MAPPER, &format, 0, 0, WAVE_FORMAT_DIRECT);
-        
-
-}
+    }
 
     ~Audio_Driver()
     {
-
         waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
         waveOutReset(hWaveOut); // Reset the audio device to stop any ongoing playback
         waveOutClose(hWaveOut); // Close the audio device
-
     }
 
-    void Write_Sound_Thread(const double& frequency, const double& duration)
+    void Write_Sound_Thread(const double& velocityX, const double& velocityY)
     {
-        std::thread soundThread(&Audio_Driver::Write_Sound, this, frequency, duration);
-        soundThread.detach(); // Join the thread after sound playback
+        std::thread soundThread(&Audio_Driver::Write_Sound, this, velocityX, velocityY);
+        soundThread.detach(); // Detach the thread after sound playback
     }
 
-    void Write_Sound(const double& frequency, const double& duration)
+    void Write_Sound(const double& velocityX, const double& velocityY)
     {
-        const int numSamples = static_cast<int>(format.nSamplesPerSec * duration);
-        std::vector<short> samples(numSamples);
+    
+        //std::cout << "Sounding...\n";
 
-        const double amplitude = 13000.0;
-        const double decayFactor = 0.98; // Decay factor to simulate the "bing" sound fading out
+        // Define frequency and duration for the ding sound
+        const double dingFrequency = 400.0 + (velocityX * 100000.0) + (velocityY * 100000.0); // High-pitch frequency
+        const double dingDuration = 0.025; // Duration of the ding sound in seconds
 
-        for (int i = 0; i < numSamples; ++i)
+        // Calculate the number of samples for the ding sound
+        const int dingNumSamples = static_cast<int>(format.nSamplesPerSec * dingDuration);
+
+        // Amplitude and decay factor for the ding sound
+        const double dingAmplitude = 0.5 * 32767.0; // Half of the maximum amplitude to prevent clipping
+        const double dingDecayFactor = 0.995; // Adjusted for a smoother decay
+
+        // Vector to hold the ding sound wave samples
+        std::vector<short> dingSamples(dingNumSamples);
+
+        // Generate the ding sound wave samples
+        for (unsigned int i = 0; i < dingNumSamples; ++i)
         {
-            double t = static_cast<double>(i) / format.nSamplesPerSec;
-            double waveValue = (amplitude) * std::sin(3.1415926 * frequency * t);
-            waveValue *= std::pow(decayFactor, i); // Apply exponential decay
-            samples[i] = static_cast<short>(waveValue);
+            double t = (double)(i) / format.nSamplesPerSec;
+            double waveValue = dingAmplitude * std::sin(2 * 3.1415926 * dingFrequency * t);
+            waveValue *= std::pow(dingDecayFactor, i);
+            dingSamples[i] = (short)(waveValue);
         }
 
+        // Prepare the header for playback of the ding sound
         ZeroMemory(&header, sizeof(header));
-        header.lpData = reinterpret_cast<LPSTR>(&samples[0]);
-        header.dwBufferLength = sizeof(samples[0]) * samples.size();
+        header.lpData = reinterpret_cast<LPSTR>(&dingSamples[0]);
+        header.dwBufferLength = sizeof(dingSamples[0]) * dingSamples.size();
 
-        MMRESULT result = waveOutPrepareHeader(hWaveOut, &header, sizeof(header));
-        result = waveOutWrite(hWaveOut, &header, sizeof(header));
+        // Prepare the ding sound buffer
+        waveOutPrepareHeader(hWaveOut, &header, sizeof(header));
+        waveOutWrite(hWaveOut, &header, sizeof(header));
 
+        
+
+        // Wait for ding sound playback to finish
         while (waveOutWrite(hWaveOut, &header, sizeof(header)) == WAVERR_STILLPLAYING) {
-            // Additional audio playback if necessary
+
         }
 
+        // Unprepare the ding sound buffer
         waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
     }
+
 };
 
 #endif

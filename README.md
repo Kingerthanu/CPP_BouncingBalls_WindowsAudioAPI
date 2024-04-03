@@ -1,3 +1,4 @@
 A C++ Program In Which Uses Physics Of Random Balls To Generate Interesting Noise Patterns. Uses Windows Audio Driver API To Make Noises.
 
-![2024-04-0220-49-04-ezgif com-optimize](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63ccbb97-9931-4f6f-96e1-978119be391b)
+![2024-04-0222-22-01-ezgif com-video-to-gif-converter](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/bddf1d6d-32ac-4ad1-b6fe-9143d6f8d670)
+

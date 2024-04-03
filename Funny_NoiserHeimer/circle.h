@@ -13,10 +13,10 @@ class Circle
 private:
     VAO arrayBuffer;
     VBO vertexBuffer;
-    const unsigned int segments = 10;
+    const unsigned int segments = 15;
     //EBO elementBuffer;
     float xCoord, yCoord;
-    float radius = 0.025f;
+    float radius = 0.05f;
     float velocity[2];
     glm::vec3 color = { 0.8f, 0.2f, 0.5f };
 
@@ -165,7 +165,7 @@ public:
 
             //if (this->velocity[0] < 0.05f && this->velocity[1] < 0.05f) {
 
-                _Audio.Write_Sound_Thread(std::abs(this->yCoord * this->xCoord * 10000.0), 0.025);
+                _Audio.Write_Sound_Thread(std::abs((this->velocity[0] * 10000.0f) + (this->velocity[0] * 10000.0f)) * 37532.145614, 0.0025);
 
            // }
             

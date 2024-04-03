@@ -23,7 +23,21 @@ public:
         format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8); // Quadruple the buffer size
         format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;
         format.cbSize = 0;
+
+        
+        ZeroMemory(&header, sizeof(header));
         MMRESULT result = waveOutOpen(&hWaveOut, WAVE_MAPPER, &format, 0, 0, WAVE_FORMAT_DIRECT);
+        
+
+}
+
+    ~Audio_Driver()
+    {
+
+        waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
+        waveOutReset(hWaveOut); // Reset the audio device to stop any ongoing playback
+        waveOutClose(hWaveOut); // Close the audio device
+
     }
 
     void Write_Sound_Thread(const double& frequency, const double& duration)
@@ -37,13 +51,13 @@ public:
         const int numSamples = static_cast<int>(format.nSamplesPerSec * duration);
         std::vector<short> samples(numSamples);
 
-        const double amplitude = 1300000.0;
+        const double amplitude = 13000.0;
         const double decayFactor = 0.98; // Decay factor to simulate the "bing" sound fading out
 
         for (int i = 0; i < numSamples; ++i)
         {
             double t = static_cast<double>(i) / format.nSamplesPerSec;
-            double waveValue = amplitude * std::sin(3.1415926 * frequency * t);
+            double waveValue = (amplitude) * std::sin(3.1415926 * frequency * t);
             waveValue *= std::pow(decayFactor, i); // Apply exponential decay
             samples[i] = static_cast<short>(waveValue);
         }

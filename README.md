@@ -7,6 +7,7 @@ Pitch And Pitch Time To Be Supplied.
 These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Removal Of The Velocity From A Pseudo Frictional Force. At Every Collision, They Will Call Upon A Defined Audio_Driver
 Class, In Which Uses Multi-threading To Execute Many Audio Write Calls. This Class Will Declare Formatting Requirements For The Audio Header Buffer As Well As Formatting Of Our Audio API Connection. 
 ![Your GIF Description](https://media.giphy.com/media/cE9GVwn2mJwoSvScrI/giphy.gif)
+
 When The Audio_Driver Is Called, It Will Make A "Thud" Sound At A Given Pitch Defined By The Current Velocity Of The Given Circle.
 In This Branch, We Are Stuck In A Circle-Boundary In Which Will Give A More Broad Range Of Interactions Compared To The Window Borders. In Future Installations, We Will Want To Have The Ability To Free-Hand Draw The Collidable Area.
 

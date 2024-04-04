@@ -6,6 +6,7 @@ The Program Will Initialize A GLSL Window In Which Will Be Using OpenGL To Rende
 Pitch And Pitch Time To Be Supplied. 
 These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Removal Of The Velocity From A Pseudo Frictional Force. At Every Collision, They Will Call Upon A Defined Audio_Driver
 Class, In Which Uses Multi-threading To Execute Many Audio Write Calls. This Class Will Declare Formatting Requirements For The Audio Header Buffer As Well As Formatting Of Our Audio API Connection. 
+
 <img src="https://media.giphy.com/media/cE9GVwn2mJwoSvScrI/giphy.gif" alt="Your GIF Description" width="300" height="200">
 
 

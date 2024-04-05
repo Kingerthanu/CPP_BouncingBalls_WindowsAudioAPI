@@ -8,6 +8,11 @@ Use This In Further Improvements Of Previous Repos As Is Super Dope.<img src="ht
 
 **The Breakdown:**
 
+
+<img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49">
+
+------------------------------------------------------
+
 The Program Will Initialize A GLSL Window In Which Will Be Using OpenGL To Render Circles On The Screen. The Circles Will Have A Dynamic Radius, Velocity, As Well As Color And Segment Count (For Circles Drawn With Many Very Small Individual Lines. In A Newer Version We Will Have Variable
 Pitch And Pitch Time To Be Supplied. 
 These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Removal Of The Velocity From A Pseudo Frictional Force. At Every Collision, They Will Call Upon A Defined Audio_Driver

@@ -23,6 +23,10 @@ In This Branch, We Are Stuck In A Circle-Boundary In Which Will Give A More Broa
 
 ------------------------------------------------------
 
+<img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/0a564bb7-d4b0-4e7f-afe5-ae799e0b575a" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/0a564bb7-d4b0-4e7f-afe5-ae799e0b575a" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/0a564bb7-d4b0-4e7f-afe5-ae799e0b575a" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/0a564bb7-d4b0-4e7f-afe5-ae799e0b575a" alt="Cornstarch <3" width="55" height="49">
+
+**Features:**
+
 ![2024-04-0222-22-01-ezgif com-video-to-gif-converter](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/bddf1d6d-32ac-4ad1-b6fe-9143d6f8d670)
 
 Project Has Taught Me A Lot About MultiThreading As Well As How Audio Is Actually Called Upon To The OS Driver And Just Why It Can Be Seen As A Normal Issue For Many Programs As Properly Defining Formats And Sizes Was A Little Challenging. Still Have Issues But Starting To Understand It More.

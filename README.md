@@ -17,15 +17,14 @@ Also Get A Pseudo-Random Velocity.
 
 The Circles Will Have A Dynamic Radius, Velocity, As Well As Color And Segment Count (For Circles Drawn With Many Very Small Individual Lines. In A Newer Version We Will Have Variable Pitch And Pitch Time To Be Supplied). These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Addition Of The Velocity From A Pseudo Force To Accelerate The Ball. At Every Collision, They Will Call Upon A Defined Audio_Driver Class, In Which Uses Multi-threading To Execute A Detached Thread For The Audio Call Function. This Class Audio Driver Will Declare Formatting Requirements For The Audio Header Buffer As Well As Formatting Of Our Audio API Connection For This Detached Threads Execution.
 
-The Main Purpose Of This Program Is To Hear The Interesting Sounds That Come From Computers When Subject To A Certain Variable Environment. This Project Has Shown Interesting Behaivor While Being Quite Trivial In Perspective (Collision Go Bonk) As It Allows Me To Simulate Many Balls And THeir Collisions In Dynamic Environments Of My Specieified Variability.
-
-
-
 <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/3861a441-5761-4674-a8ad-642c9d733942" alt="Your GIF Description" width="185" height="115">
-
 
 When The Audio_Driver Is Called, It Will Make A "Thud" Sound At A Given Pitch Defined By The Current Velocity Of The Given Circle.
 In This Branch, We Are Stuck In A Circle-Boundary In Which Will Give A More Broad Range Of Interactions Compared To The Window Borders. In Future Installations, We Will Want To Have The Ability To Free-Hand Draw The Collidable Area.
+
+
+The Main Purpose Of This Program Is To Hear The Interesting Sounds That Come From Computers When Subject To A Certain Variable Environment. This Project Has Shown Interesting Behaivor While Being Quite Trivial In Perspective (Collision Go Bonk) As It Allows Me To Simulate Many Balls And THeir Collisions In Dynamic Environments Of My Specieified Variability.
+
 
 <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49">
 

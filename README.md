@@ -10,10 +10,14 @@ Use This In Further Improvements Of Previous Repos As Is Super Dope.<img src="ht
 
 This Program Deep Down Is Working On Circles And A Audio Driver. Collisions On A Circle Will Call The Audio Driver To Make A Sound Based Upon The Circles Velocity. Both Parts Have Been Implemented To Try To Encapsulate A Pretty Broad Reach Of Inherit Abilities That Will Be Expanded Upon.
 
-The Program Will Initialize A GLSL Window In Which Will Be Using OpenGL To Render Circles On The Screen. The Circles Will Have A Dynamic Radius, Velocity, As Well As Color And Segment Count (For Circles Drawn With Many Very Small Individual Lines. In A Newer Version We Will Have Variable
-Pitch And Pitch Time To Be Supplied. 
-These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Removal Of The Velocity From A Pseudo Frictional Force. At Every Collision, They Will Call Upon A Defined Audio_Driver
-Class, In Which Uses Multi-threading To Execute Many Audio Write Calls. This Class Will Declare Formatting Requirements For The Audio Header Buffer As Well As Formatting Of Our Audio API Connection. 
+The Program Will Initialize A GLSL Window In Which Will Be Using OpenGL To Render Circles On The Screen. 
+
+During Initialization, We Will Look At Our Global Variable Amount Of Spawned Circles And Will Spawn The According Amount In A Pre-Defined Range In The Window (In Our Case Inside The Boundary Circle). Each Spawned Circle Will 
+Also Get A Pseudo-Random Velocity.
+
+The Circles Will Have A Dynamic Radius, Velocity, As Well As Color And Segment Count (For Circles Drawn With Many Very Small Individual Lines. In A Newer Version We Will Have Variable Pitch And Pitch Time To Be Supplied). These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Removal Of The Velocity From A Pseudo Frictional Force. At Every Collision, They Will Call Upon A Defined Audio_Driver Class, In Which Uses Multi-threading To Execute A Detached Thread For The Audio Call Function. This Class Audio Driver Will Declare Formatting Requirements For The Audio Header Buffer As Well As Formatting Of Our Audio API Connection For This Detached Threads Execution. 
+
+
 
 <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/3861a441-5761-4674-a8ad-642c9d733942" alt="Your GIF Description" width="185" height="115">
 

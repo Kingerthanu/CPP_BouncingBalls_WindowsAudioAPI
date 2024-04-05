@@ -8,6 +8,8 @@ Use This In Further Improvements Of Previous Repos As Is Super Dope.<img src="ht
 
 **The Breakdown:**
 
+This Program Deep Down Is Working On Circles And A Audio Driver. Collisions On A Circle Will Call The Audio Driver To Make A Sound Based Upon The Circles Velocity.
+
 The Program Will Initialize A GLSL Window In Which Will Be Using OpenGL To Render Circles On The Screen. The Circles Will Have A Dynamic Radius, Velocity, As Well As Color And Segment Count (For Circles Drawn With Many Very Small Individual Lines. In A Newer Version We Will Have Variable
 Pitch And Pitch Time To Be Supplied. 
 These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Removal Of The Velocity From A Pseudo Frictional Force. At Every Collision, They Will Call Upon A Defined Audio_Driver

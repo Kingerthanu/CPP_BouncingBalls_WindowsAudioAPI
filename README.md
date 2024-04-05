@@ -21,17 +21,15 @@ Pitch And Pitch Time To Be Supplied.
 These Circles Will Move Along Their Velocity Vector Until A Collision Happens In Which They Will Redirect, Going Along The Same Velocity Vector But In The Opposite Way With Some Removal Of The Velocity From A Pseudo Frictional Force. At Every Collision, They Will Call Upon A Defined Audio_Driver
 Class, In Which Uses Multi-threading To Execute Many Audio Write Calls. This Class Will Declare Formatting Requirements For The Audio Header Buffer As Well As Formatting Of Our Audio API Connection. 
 
-<img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49">
-
-------------------------------------------------------
-
 <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/3861a441-5761-4674-a8ad-642c9d733942" alt="Your GIF Description" width="185" height="115">
 
 
 When The Audio_Driver Is Called, It Will Make A "Thud" Sound At A Given Pitch Defined By The Current Velocity Of The Given Circle.
 In This Branch, We Are Stuck In A Circle-Boundary In Which Will Give A More Broad Range Of Interactions Compared To The Window Borders. In Future Installations, We Will Want To Have The Ability To Free-Hand Draw The Collidable Area.
 
+<img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49">
 
+------------------------------------------------------
 
 ![2024-04-0222-22-01-ezgif com-video-to-gif-converter](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/bddf1d6d-32ac-4ad1-b6fe-9143d6f8d670)
 

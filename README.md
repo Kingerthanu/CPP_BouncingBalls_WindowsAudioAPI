@@ -25,6 +25,9 @@ In This Branch, We Are Stuck In A Circle-Boundary In Which Will Give A More Broa
 
 The Main Purpose Of This Program Is To Hear The Interesting Sounds That Come From Computers When Subject To A Certain Variable Environment. This Project Has Shown Interesting Behaivor While Being Quite Trivial In Perspective (Collision Go Bonk) As It Allows Me To Simulate Many Balls And THeir Collisions In Dynamic Environments Of My Specieified Variability.
 
+Project Has Taught Me A Lot About MultiThreading As Well As How Audio Is Actually Called Upon To The OS Driver And Just Why It Can Be Seen As A Normal Issue For Many Programs As Properly Defining Formats And Sizes Was A Little Challenging. Still Have Issues But Starting To Understand It More.
+I Also Am Learning About More Ways To Call Draw Calls On The OpenGL API Other Than Triangles.<img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/4e382c5b-bf2d-4834-80e5-fd4227b9902e" alt="Cornstarch <3" width="35" height="29">
+
 
 <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/63200c18-e940-46f2-aa56-fcf2f2a5893c" alt="Cornstarch <3" width="55" height="49">
 
@@ -35,10 +38,6 @@ The Main Purpose Of This Program Is To Hear The Interesting Sounds That Come Fro
 **Features:**
 
 ![2024-04-0222-22-01-ezgif com-video-to-gif-converter](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/bddf1d6d-32ac-4ad1-b6fe-9143d6f8d670)
-
-Project Has Taught Me A Lot About MultiThreading As Well As How Audio Is Actually Called Upon To The OS Driver And Just Why It Can Be Seen As A Normal Issue For Many Programs As Properly Defining Formats And Sizes Was A Little Challenging. Still Have Issues But Starting To Understand It More.
-I Also Am Learning About More Ways To Call Draw Calls On The OpenGL API Other Than Triangles.<img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/4e382c5b-bf2d-4834-80e5-fd4227b9902e" alt="Cornstarch <3" width="35" height="29">
-
 
 
 <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49">

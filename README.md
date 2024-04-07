@@ -8,7 +8,9 @@ Use This In Further Improvements Of Previous Repos As Is Super Dope.<img src="ht
 
 **The Breakdown:**
 
-This Program Deep Down Is Working On Circles And A Audio Driver. Collisions On A Circle Will Call The Audio Driver To Make A Sound Based Upon The Circles Velocity. Both Parts Have Been Implemented To Try To Encapsulate A Pretty Broad Reach Of Inherit Abilities That Will Be Expanded Upon.
+This Program Deep Down Is Working On Circles And A Audio Driver Through A OpenGL GLSL Window.
+
+Collisions On A Circle Will Call The Audio Driver To Make A Sound Based Upon The Circles Velocity. Both Parts Have Been Implemented To Try To Encapsulate A Pretty Broad Reach Of Inherit Abilities That Will Be Expanded Upon.
 
 The Program Will Initialize A GLSL Window In Which Will Be Using OpenGL To Render Circles On The Screen. 
 

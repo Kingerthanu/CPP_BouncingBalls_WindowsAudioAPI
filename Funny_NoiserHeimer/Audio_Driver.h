@@ -24,7 +24,7 @@ private:
 
         // Amplitude and decay factor for the ding sound
         const double dingAmplitude = 0.5 * 32767.0; // Half of the maximum amplitude to prevent clipping
-        const double dingDecayFactor = 0.995; // Adjusted for a smoother decay
+        const double dingDecayFactor = 0.9915; // Adjusted for a smoother decay
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -35,8 +35,8 @@ public:
         format.nChannels = 1;
         format.nSamplesPerSec = 44100; // Adjusted to standard audio sample rate
         format.wBitsPerSample = 16; // Increased for better audio quality
-        format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8);
-        format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;
+        format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8);  // Tell Ourselves How To Chunk Out Our Bits With The Given Parts We Have  (I.E. Halving Block Alignment To Fit 2-Channels In One Check, Etc.)
+        format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;  // We Have This Many Samples To Do, And This Many Blocks To Do It For
         format.cbSize = 0;
 
         ZeroMemory(&header, sizeof(header));

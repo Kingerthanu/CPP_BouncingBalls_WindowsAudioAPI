@@ -8,8 +8,10 @@
 #include "Audio_Driver.h"
 
 static const unsigned int WIDTH = 1200;
+static const unsigned int BALL_AMOUNT = 5;
+static const float BASE_VELOCITY[2] = {-0.0001f, -0.0005f};
 
-static const unsigned int BALL_AMOUNT = 1;
+
 
 
 int main()
@@ -57,7 +59,7 @@ int main()
 
 		for (unsigned int i = 0; i < BALL_AMOUNT; i++) {
 
-			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  (- 0.003 * (std::rand() % 20)) / BALL_AMOUNT, (- 0.004f * (std::rand() % 20)) / BALL_AMOUNT, 0.015f);
+			circleBuffer[i] = new Circle(randomCoord(gen), randomCoord(gen),  (BASE_VELOCITY[0] * (std::rand() % 20)) / BALL_AMOUNT, (BASE_VELOCITY[1] * (std::rand() % 20)) / BALL_AMOUNT, 0.015f);
 
 		}
 	}

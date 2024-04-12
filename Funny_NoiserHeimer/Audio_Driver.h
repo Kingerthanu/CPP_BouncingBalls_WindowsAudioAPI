@@ -20,11 +20,10 @@ private:
         const double dingDuration = 0.01; // Duration of the ding sound in seconds
 
         // Calculate the number of samples for the ding sound     (44100 is hard-baked as we predeterminately know our nSamplesPerSec).
-        const int dingNumSamples = (int)(44100 * dingDuration);
+        const int dingNumSamples = (int)(22050 * dingDuration);
 
         // Amplitude and decay factor for the ding sound
         const double dingAmplitude = 0.5 * 32767.0; // Half of the maximum amplitude to prevent clipping
-        const double dingDecayFactor = 0.9915; // Adjusted for a smoother decay
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -33,7 +32,7 @@ public:
     {
         format.wFormatTag = WAVE_FORMAT_PCM;
         format.nChannels = 1;
-        format.nSamplesPerSec = 44100; // Adjusted to standard audio sample rate
+        format.nSamplesPerSec = 22050; // Adjusted to standard audio sample rate
         format.wBitsPerSample = 16; // Increased for better audio quality
         format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8);  // Tell Ourselves How To Chunk Out Our Bits With The Given Parts We Have  (I.E. Halving Block Alignment To Fit 2-Channels In One Check, Etc.)
         format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;  // We Have This Many Samples To Do, And This Many Blocks To Do It For
@@ -45,9 +44,11 @@ public:
 
     ~Audio_Driver()
     {
+
         waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
         waveOutReset(hWaveOut); // Reset the audio device to stop any ongoing playback
         waveOutClose(hWaveOut); // Close the audio device
+
     }
 
     void Write_Sound_Thread(const double& velocityX, const double& velocityY)
@@ -62,23 +63,38 @@ public:
         //std::cout << "Sounding...\n";
 
         // Define frequency and duration for the ding sound
-        const double dingFrequency =  135.134 + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
+        const double dingFrequency =  (1895.134) + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
 
         // Vector to hold the ding sound wave samples
         std::vector<short> dingSamples(dingNumSamples);
 
-        // Generate the ding sound wave samples
+        // Generate the ding sound wave samples with fade-in and fade-out
         for (unsigned int i = 0; i < dingNumSamples; ++i)
         {
             double t = (double)(i) / format.nSamplesPerSec;
-            double waveValue = dingAmplitude * std::sin(2 * 3.1415926 * dingFrequency * t);
-            waveValue *= std::pow(dingDecayFactor, i);
-            dingSamples[i] = (short)(waveValue);
+            double fadeFactor = 1.0;  // Magnitude Of Our Ding's Frequency We Will Represent In Our Fading
+
+            // Apply Fade-In Effect
+            if (i < dingNumSamples * 0.5) { // Adjust Fade-In Duration As Needed
+
+                fadeFactor = (double)(i) / (dingNumSamples * 0.5); // Linear fade-in
+
+            }
+
+            // Apply Fade-Out Effect
+            else if (i > dingNumSamples * 0.5) { // Adjust fade-out duration as needed
+
+                fadeFactor = 1.0 - (double)(i - dingNumSamples * 0.5) / (dingNumSamples * 0.5); // Linear fade-out
+
+            }
+
+            double waveValue = dingAmplitude * fadeFactor * std::sin(2 * 3.1415926 * dingFrequency * t);
+            dingSamples[i] = static_cast<short>(waveValue);
         }
 
         // Prepare the header for playback of the ding sound
         ZeroMemory(&header, sizeof(header));
-        header.lpData = reinterpret_cast<LPSTR>(&dingSamples[0]);
+        header.lpData = (LPSTR)(&dingSamples[0]);
         header.dwBufferLength = sizeof(dingSamples[0]) * dingSamples.size();
 
         // Prepare the ding sound buffer

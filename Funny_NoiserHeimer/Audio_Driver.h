@@ -71,7 +71,7 @@ class Audio_Driver
                 //std::cout << "Sounding...\n";
 
                 // Define frequency and duration for the ding sound
-                const double dingFrequency =  (195.134) + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
+                const double dingFrequency =  (15.134) + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
 
                 // Vector to hold the ding sound wave samples
                 std::vector<short> dingSamples(dingNumSamples);

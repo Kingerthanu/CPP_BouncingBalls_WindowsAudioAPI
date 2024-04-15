@@ -7,111 +7,121 @@
 #include <thread>
 #include <algorithm>
 #include <iostream>
+#include "SpectrogramWindow.h"
 
 class Audio_Driver
 {
-private:
-    WAVEFORMATEX format;
-    HWAVEOUT hWaveOut;
-    WAVEHDR header;
+        private:
+            WAVEFORMATEX format;
+            HWAVEOUT hWaveOut;
+            WAVEHDR header;
+            Spectrogram_Window& analogCallback;
+            
 
-    // ~~~~~~~~Constants of Feedback~~~~~~~~~~~~
 
-        const double dingDuration = 0.01; // Duration of the ding sound in seconds
+        // ~~~~~~~~Constants of Feedback~~~~~~~~~~~~
 
-        // Calculate the number of samples for the ding sound     (44100 is hard-baked as we predeterminately know our nSamplesPerSec).
-        const int dingNumSamples = (int)(22050 * dingDuration);
+            const double dingDuration = 0.01; // Duration of the ding sound in seconds
 
-        // Amplitude and decay factor for the ding sound
-        const double dingAmplitude = 0.5 * 32767.0; // Half of the maximum amplitude to prevent clipping
+            // Calculate the number of samples for the ding sound     (44100 is hard-baked as we predeterminately know our nSamplesPerSec).
+            const int dingNumSamples = (int)(22050 * dingDuration);
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            // Amplitude and decay factor for the ding sound
+            const double dingAmplitude = 0.5 * 32767.0; // Half of the maximum amplitude to prevent clipping
 
-public:
-    Audio_Driver()
-    {
-        format.wFormatTag = WAVE_FORMAT_PCM;
-        format.nChannels = 1;
-        format.nSamplesPerSec = 22050; // Adjusted to standard audio sample rate
-        format.wBitsPerSample = 16; // Increased for better audio quality
-        format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8);  // Tell Ourselves How To Chunk Out Our Bits With The Given Parts We Have  (I.E. Halving Block Alignment To Fit 2-Channels In One Check, Etc.)
-        format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;  // We Have This Many Samples To Do, And This Many Blocks To Do It For
-        format.cbSize = 0;
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        ZeroMemory(&header, sizeof(header));
-        MMRESULT result = waveOutOpen(&hWaveOut, WAVE_MAPPER, &format, 0, 0, WAVE_FORMAT_DIRECT);
-    }
+        public:
+            Audio_Driver(Spectrogram_Window& callbackee) : analogCallback(callbackee)
+            {
 
-    ~Audio_Driver()
-    {
+                format.wFormatTag = WAVE_FORMAT_PCM;
+                format.nChannels = 1;
+                format.nSamplesPerSec = 22050; // Adjusted to standard audio sample rate
+                format.wBitsPerSample = 16; // Increased for better audio quality
+                format.nBlockAlign = (format.nChannels * format.wBitsPerSample / 8);  // Tell Ourselves How To Chunk Out Our Bits With The Given Parts We Have  (I.E. Halving Block Alignment To Fit 2-Channels In One Check, Etc.)
+                format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;  // We Have This Many Samples To Do, And This Many Blocks To Do It For
+                format.cbSize = 0;
 
-        waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
-        waveOutReset(hWaveOut); // Reset the audio device to stop any ongoing playback
-        waveOutClose(hWaveOut); // Close the audio device
+                ZeroMemory(&header, sizeof(header));
+                MMRESULT result = waveOutOpen(&hWaveOut, WAVE_MAPPER, &format, 0, 0, WAVE_FORMAT_DIRECT);
 
-    }
+            }
 
-    void Write_Sound_Thread(const double& velocityX, const double& velocityY)
-    {
-        std::thread soundThread(&Audio_Driver::Write_Sound, this, velocityX, velocityY);
-        soundThread.detach(); // Detach the thread after sound playback
-    }
+            ~Audio_Driver()
+            {
 
-    void Write_Sound(const double& velocityX, const double& velocityY)
-    {
+                waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
+                waveOutReset(hWaveOut); // Reset the audio device to stop any ongoing playback
+                waveOutClose(hWaveOut); // Close the audio device
+
+            }
+
+            void Write_Sound_Thread(const double& velocityX, const double& velocityY)
+            {
+
+                std::thread soundThread(&Audio_Driver::Write_Sound, this, velocityX, velocityY);
+                soundThread.detach(); // Detach the thread after sound playback
+
+            }
+
+            void Write_Sound(const double& velocityX, const double& velocityY)
+            {
     
-        //std::cout << "Sounding...\n";
+                //std::cout << "Sounding...\n";
 
-        // Define frequency and duration for the ding sound
-        const double dingFrequency =  (1895.134) + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
+                // Define frequency and duration for the ding sound
+                const double dingFrequency =  (195.134) + (velocityX * 10000.0) + (velocityY * 10000.0); // High-pitch frequency
 
-        // Vector to hold the ding sound wave samples
-        std::vector<short> dingSamples(dingNumSamples);
+                // Vector to hold the ding sound wave samples
+                std::vector<short> dingSamples(dingNumSamples);
 
-        // Generate the ding sound wave samples with fade-in and fade-out
-        for (unsigned int i = 0; i < dingNumSamples; ++i)
-        {
-            double t = (double)(i) / format.nSamplesPerSec;
-            double fadeFactor = 1.0;  // Magnitude Of Our Ding's Frequency We Will Represent In Our Fading
+                // Generate the ding sound wave samples with fade-in and fade-out
+                for (unsigned int i = 0; i < dingNumSamples; ++i)
+                {
+                    double t = (double)(i) / format.nSamplesPerSec;
+                    double fadeFactor = 1.0;  // Magnitude Of Our Ding's Frequency We Will Represent In Our Fading
 
-            // Apply Fade-In Effect
-            if (i < dingNumSamples * 0.5) { // Adjust Fade-In Duration As Needed
+                    // Apply Fade-In Effect
+                    if (i < dingNumSamples * 0.5) { // Adjust Fade-In Duration As Needed
 
-                fadeFactor = (double)(i) / (dingNumSamples * 0.5); // Linear fade-in
+                        fadeFactor = (double)(i) / (dingNumSamples * 0.5); // Linear fade-in
 
-            }
+                    }
 
-            // Apply Fade-Out Effect
-            else if (i > dingNumSamples * 0.5) { // Adjust fade-out duration as needed
+                    // Apply Fade-Out Effect
+                    else if (i > dingNumSamples * 0.5) { // Adjust fade-out duration as needed
 
-                fadeFactor = 1.0 - (double)(i - dingNumSamples * 0.5) / (dingNumSamples * 0.5); // Linear fade-out
+                        fadeFactor = 1.0 - (double)(i - dingNumSamples * 0.5) / (dingNumSamples * 0.5); // Linear fade-out
 
-            }
+                    }
 
-            double waveValue = dingAmplitude * fadeFactor * std::sin(2 * 3.1415926 * dingFrequency * t);
-            dingSamples[i] = static_cast<short>(waveValue);
-        }
+                    double waveValue = dingAmplitude * fadeFactor * std::sin(2 * 3.1415926 * dingFrequency * t);
+                    dingSamples[i] = static_cast<short>(waveValue);
+                }
 
-        // Prepare the header for playback of the ding sound
-        ZeroMemory(&header, sizeof(header));
-        header.lpData = (LPSTR)(&dingSamples[0]);
-        header.dwBufferLength = sizeof(dingSamples[0]) * dingSamples.size();
+                this->analogCallback.RenderDiscrete(dingSamples);
 
-        // Prepare the ding sound buffer
-        waveOutPrepareHeader(hWaveOut, &header, sizeof(header));
-        waveOutWrite(hWaveOut, &header, sizeof(header));
+                // Prepare the header for playback of the ding sound
+                ZeroMemory(&header, sizeof(header));
+                header.lpData = (LPSTR)(&dingSamples[0]);
+                header.dwBufferLength = sizeof(dingSamples[0]) * dingSamples.size();
+
+                // Prepare the ding sound buffer
+                waveOutPrepareHeader(hWaveOut, &header, sizeof(header));
+                waveOutWrite(hWaveOut, &header, sizeof(header));
 
         
 
-        // Wait for ding sound playback to finish
-        waveOutWrite(hWaveOut, &header, sizeof(header));
+                // Wait for ding sound playback to finish
+                waveOutWrite(hWaveOut, &header, sizeof(header));
 
-        // Wait half a second for sound
-        Sleep(500);
+                // Wait half a second for sound
+                Sleep(500);
 
-        // Unprepare the ding sound buffer
-        waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
-    }
+                // Unprepare the ding sound buffer
+                waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));
+            }
 
 };
 

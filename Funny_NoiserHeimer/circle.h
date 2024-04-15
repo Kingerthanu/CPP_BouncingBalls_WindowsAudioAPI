@@ -136,7 +136,7 @@ public:
 
             this->vertexBuffer.Bind();
 
-            Vertex* bufferData = static_cast<Vertex*>(glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE));
+            Vertex* bufferData = (Vertex*)(glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE));
 
             for (int i = 0; i < segments; ++i) {
 
@@ -161,7 +161,7 @@ public:
 
             this->vertexBuffer.Bind();
 
-            Vertex* bufferData = static_cast<Vertex*>(glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE));
+            Vertex* bufferData = (Vertex*)(glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE));
 
             glm::vec3 newColor = { ((std::rand() % 255) / 255.0f), ((std::rand() % 255) / 255.0f), ((std::rand() % 255) / 255.0f) };
 

@@ -11,8 +11,15 @@ class VBO
 	public:
 		GLuint ID;
 		VBO(std::vector<Vertex>& vertices);
-		VBO(){};
+		VBO(){ };
 
+
+		void genBuffer()
+		{
+
+			glGenBuffers(1, &ID);
+
+		};
 		void Bind();
 		void unBind();
 		void Delete();

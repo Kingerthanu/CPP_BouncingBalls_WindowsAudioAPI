@@ -39,8 +39,11 @@ I Also Am Learning About More Ways To Call Draw Calls On The OpenGL API Other Th
 
 **Features:**
 
+**User-Variable Constants (Like Ball Count):**
 ![2024-04-0222-22-01-ezgif com-video-to-gif-converter](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/bddf1d6d-32ac-4ad1-b6fe-9143d6f8d670)
 
+
+**Newest Addition, Audio Wave Visualization:**
 
 <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49"><img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/b28fd612-824f-48f5-a2dd-c46f8824b07e" alt="Cornstarch <3" width="55" height="49">
 

@@ -39,7 +39,7 @@ I Also Am Learning About More Ways To Call Draw Calls On The OpenGL API Other Th
 
 **Features:**
 
-<img width="902" alt="image" src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/97a143f0-98f2-4677-b189-4ad3cc5e07fa">
+<img width="1802" alt="image" src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/97a143f0-98f2-4677-b189-4ad3cc5e07fa">
 
 
 **User-Variable Constants (Like Ball Count):**

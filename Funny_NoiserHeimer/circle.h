@@ -148,7 +148,7 @@ public:
 
             glUnmapBuffer(GL_ARRAY_BUFFER);
 
-            this->velocity[1] -= 0.0008f;
+            this->velocity[1] -= 0.0028f;
             this->velocity[0] *= 1.001f;
             this->xCoord = newOriginX;
             this->yCoord = newOriginY;

@@ -40,8 +40,8 @@ public:
         glfwMakeContextCurrent(this->_WINDOW);
 
         // Load OpenGL function pointers
-       // gladLoadGL();
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        // gladLoadGL();
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glfwSwapBuffers(this->_WINDOW);
 

@@ -57,11 +57,10 @@ int main()
     }
 
     Circle boundaryCircle = Circle(0.0f, 0.0f, 0.0f, 0.0f, 0.5f, 60, glm::vec3(0.1f, 0.73f, 0.32f));
-    std::chrono::duration<double> frameDuration(1.0 / 120);
+    std::chrono::duration<double> frameDuration(1.0 / 60);
 
     // Rendering loop for main window
     while (!glfwWindowShouldClose(_WINDOW)) {
-        glfwMakeContextCurrent(_WINDOW);
         auto start = std::chrono::high_resolution_clock::now();
         glClear(GL_COLOR_BUFFER_BIT);
 

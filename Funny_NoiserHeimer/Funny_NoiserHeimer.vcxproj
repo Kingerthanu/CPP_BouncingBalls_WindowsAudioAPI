@@ -93,13 +93,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\bensp\source\repos\Funny_NoiserHeimer\Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\bensp\source\repos\Funny_NoiserHeimer\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\bensp\source\repos\Kingerthanu\CPP_BouncingBalls_WindowsAudioAPI\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\bensp\source\repos\Kingerthanu\CPP_BouncingBalls_WindowsAudioAPI\Libraries\lib;$(LibraryPath)</LibraryPath>
     <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\bensp\source\repos\Funny_NoiserHeimer\Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\bensp\source\repos\Funny_NoiserHeimer\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\bensp\source\repos\Kingerthanu\CPP_BouncingBalls_WindowsAudioAPI\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\bensp\source\repos\Kingerthanu\CPP_BouncingBalls_WindowsAudioAPI\Libraries\lib;$(LibraryPath)</LibraryPath>
     <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

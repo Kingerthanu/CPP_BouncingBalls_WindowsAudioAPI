@@ -17,7 +17,7 @@ class VBO
 		void genBuffer()
 		{
 
-			glGenBuffers(1, &ID);
+			glGenBuffers(1, &this->ID);
 
 		};
 		void Bind();

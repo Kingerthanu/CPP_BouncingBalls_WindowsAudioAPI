@@ -1,3 +1,5 @@
+# CPP_BouncingBalls_WindowsAudioAPI
+
 This Project Comes From Some Videos I've Seen Of Noise Being Made From Code Using Physics Engines. With My Previous Projects NewFound Ideas I Try To Implement Audio Drivers And Sample Buffers Using The Windows API. I Have Been Also Using This Project
 As An Opportunity To Learn More About GitHub And Really How To Use It Alongside IDEs (In My Case Visual Studio) As Its Allowed Me A Much Easier Documentation And Improvement Of Code Without Having To Update The GitHub Page With A Whole New File Dump. I Will Try To
 Use This In Further Improvements Of Previous Repos As Is Super Dope. <img src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/f9c6103e-0226-4364-9018-6a9e1f816578" alt="Cornstarch <3" width="35" height="29">

@@ -44,8 +44,8 @@ I Also Am Learning About More Ways To Call Draw Calls On The OpenGL API Other Th
 
 ![MULTIPLE_BALLS-ezgif com-video-to-gif-converter (1)](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/f0078bc3-ef16-460e-93fe-f75362144df1)
 
-**Snapshot Of Window And Waveform Visualization:**
-<img width="1802" alt="image" src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/97a143f0-98f2-4677-b189-4ad3cc5e07fa">
+**Snapshot Of Window And Waveform Visualization (Newer Version With More Customized Waveform Color Palette):**
+<img width="900" alt="image" src="https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/80cec64f-7f15-4c6a-80e0-c5966eb68a1e">
 
 **User-Variable Constants (Like Ball Count):**
 ![2024-04-0222-22-01-ezgif com-video-to-gif-converter](https://github.com/Kingerthanu/CPP_BouncingBalls_WindowsAudioAPI/assets/76754592/bddf1d6d-32ac-4ad1-b6fe-9143d6f8d670)

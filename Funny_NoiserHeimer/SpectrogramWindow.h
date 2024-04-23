@@ -84,7 +84,7 @@ public:
         unsigned int bufferSize = sampleBuffer.size();
 
         for (unsigned int i = 0; i < bufferSize; ++i, stpr += stprIncrement) {
-            normalizedBuffer.push_back(Vertex({ glm::vec2({ stpr, (((float)(sampleBuffer[i])) / SHRT_MAX * 2.0f) }), glm::vec3({0.43f, 0.2f, 0.0f}) }));
+            normalizedBuffer.push_back(Vertex({ glm::vec2({ stpr, (((float)(sampleBuffer[i])) / SHRT_MAX * 2.0f) }), glm::vec3({0.86f, 0.4f, 0.0f}) }));
         }
 
         // Bind VAO and VBO

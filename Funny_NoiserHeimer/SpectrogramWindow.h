@@ -45,6 +45,7 @@ public:
 
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        glfwSwapBuffers(this->_WINDOW);
 
         // Set up OpenGL resources (VAO, VBO)
         this->vertexArray = VAO();
@@ -81,10 +82,9 @@ public:
 
         float stprIncrement = 2.0f / sampleBuffer.size(); // Adjust this value as needed
         float stpr = -1.0f;
-        unsigned int bufferSize = sampleBuffer.size();
 
-        for (unsigned int i = 0; i < bufferSize; ++i, stpr += stprIncrement) {
-            normalizedBuffer.push_back(Vertex({ glm::vec2({ stpr, (((float)(sampleBuffer[i])) / SHRT_MAX * 2.0f) }), glm::vec3({0.86f, 0.4f, 0.0f}) }));
+        for (unsigned int i = 0, bufferSize = sampleBuffer.size(); i < bufferSize; ++i, stpr += stprIncrement) {
+            normalizedBuffer.push_back(Vertex({ glm::vec2({ stpr, (((float)(sampleBuffer[i])) / SHRT_MAX * 2.0f) }), glm::vec3({0.8f, 0.4f, 0.95f}) }));
         }
 
         // Bind VAO and VBO

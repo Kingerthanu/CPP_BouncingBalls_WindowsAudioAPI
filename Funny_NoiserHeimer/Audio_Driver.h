@@ -116,8 +116,8 @@ class Audio_Driver
                 // Wait for ding sound playback to finish
                 waveOutWrite(hWaveOut, &header, sizeof(header));
 
-                // Wait half a second for sound
-                Sleep(500);
+                // Wait 250ms
+                Sleep(250);
 
                 // Unprepare the ding sound buffer
                 waveOutUnprepareHeader(hWaveOut, &header, sizeof(header));

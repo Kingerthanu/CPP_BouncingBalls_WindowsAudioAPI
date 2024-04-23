@@ -12,7 +12,7 @@
 static const unsigned int WIDTH = 1200;
 static const unsigned int HEIGHT = 1200;
 static const unsigned int BALL_AMOUNT = 1;
-static const float BASE_VELOCITY[2] = { -0.0005f, -0.0015f };
+static const float BASE_VELOCITY[2] = { -0.005f, -0.0015f };
 
 int main()
 {

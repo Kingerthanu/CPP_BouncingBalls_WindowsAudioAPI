@@ -68,7 +68,7 @@ public:
     void RenderDiscrete(const std::vector<short>& sampleBuffer)
     {
         // Lock the mutex to synchronize access to OpenGL context
-        std::lock_guard<std::mutex> lock(contextMutex);
+        // Dont think is realistically neccessary -> std::lock_guard<std::mutex> lock(contextMutex);
 
         // Make the window's OpenGL context current
         glfwMakeContextCurrent(this->_WINDOW);
